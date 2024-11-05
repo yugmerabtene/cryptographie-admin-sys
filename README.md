@@ -61,6 +61,57 @@ Un certificat SSL auto-signé permet d'établir une connexion sécurisée sans l
 
 Une fois généré, le fichier `certificat.crt` peut être utilisé pour configurer un serveur web, tel que Nginx ou Apache, avec SSL.  
 
+Pour intégrer un certificat SSL dans Apache et sécuriser votre serveur avec HTTPS, suivez ces étapes :
+
+1. **Placez le certificat SSL et la clé privée**  
+   Assurez-vous que vous avez les fichiers suivants :
+   - Le certificat SSL (généralement avec une extension `.crt` ou `.pem`)
+   - La clé privée du certificat (souvent `.key`)
+   - Un fichier de chaîne de certificats ou certificat intermédiaire si nécessaire (`ca.crt` ou similaire)
+
+   Placez ces fichiers dans un dossier sécurisé sur votre serveur, par exemple : `/etc/ssl/`.
+
+2. **Configurer Apache pour utiliser le certificat**  
+   Ouvrez le fichier de configuration d'Apache pour votre site. Ce fichier est généralement situé dans `/etc/apache2/sites-available/` et s'appelle quelque chose comme `default-ssl.conf`. Sinon, vous pouvez éditer le fichier de configuration du site en question.
+
+3. **Modifier le fichier de configuration SSL**  
+   Dans le fichier, ajoutez ou modifiez les lignes suivantes :
+
+   ```apache
+   <VirtualHost *:443>
+       ServerName votre_domaine.com
+
+       SSLEngine on
+       SSLCertificateFile /etc/ssl/votre_certificat.crt
+       SSLCertificateKeyFile /etc/ssl/votre_cle.key
+       SSLCertificateChainFile /etc/ssl/chaine_de_certificats.crt  # Si requis
+
+       DocumentRoot /var/www/html
+
+       # Autres configurations de votre site
+   </VirtualHost>
+   ```
+
+   Remplacez `votre_domaine.com`, `votre_certificat.crt`, `votre_cle.key`, et `chaine_de_certificats.crt` par les chemins corrects vers vos fichiers.
+
+4. **Activer le module SSL et le site sécurisé**  
+   Si ce n'est pas déjà fait, activez le module SSL d'Apache et le site sécurisé avec les commandes suivantes :
+
+   ```bash
+   sudo a2enmod ssl
+   sudo a2ensite default-ssl.conf
+   ```
+
+5. **Redémarrer Apache**  
+   Redémarrez Apache pour appliquer les modifications :
+
+   ```bash
+   sudo systemctl restart apache2
+   ```
+
+6. **Vérification**  
+   Accédez à votre site via `https://votre_domaine.com` pour vérifier que le certificat est bien installé.
+
 
 
 #### Suite : Voir la fonction de hashage  
