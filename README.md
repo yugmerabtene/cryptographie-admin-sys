@@ -3,6 +3,9 @@ La cryptographie symétrique utilise une clé unique pour chiffrer et déchiffre
 
 #### Exemple en ligne de commande (avec OpenSSL)
 Pour chiffrer un fichier en utilisant une clé symétrique :
+![1716160369074](https://github.com/user-attachments/assets/fa36ccce-024a-4c14-9e53-5ca9378ca8c4)  
+
+
 ```bash
 openssl enc -aes-256-cbc -salt -in fichier.txt -out fichier_chiffre.txt -k "mot_de_passe"
 ```
@@ -14,7 +17,11 @@ openssl enc -d -aes-256-cbc -in fichier_chiffre.txt -out fichier_dechiffre.txt -
 
 Ici, l’algorithme de chiffrement utilisé est AES-256 en mode CBC.
 
-### Cryptographie Asymétrique
+### Cryptographie Asymétrique  
+
+![images](https://github.com/user-attachments/assets/a92a12c6-d0d0-4f29-99b6-e26a536c3ddd)  
+
+
 La cryptographie asymétrique utilise une paire de clés : une clé publique et une clé privée. La clé publique est utilisée pour chiffrer les données, et seule la clé privée correspondante peut les déchiffrer. Ce type de cryptographie est essentiel pour l'échange sécurisé de clés et la vérification d'identité (comme dans SSL/TLS).
 
 #### Exemple en ligne de commande (avec OpenSSL)
