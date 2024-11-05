@@ -2,6 +2,7 @@
 La cryptographie symétrique utilise une clé unique pour chiffrer et déchiffrer les données. Cela signifie que la même clé est partagée entre les deux parties. Elle est rapide et idéale pour des volumes de données élevés, mais elle pose des défis pour le partage sécurisé de la clé.
 
 #### Exemple en ligne de commande (avec OpenSSL)  
+![image](https://github.com/user-attachments/assets/8121792e-dcd7-4aad-9add-cb2619720086)  
 
 Pour chiffrer un fichier en utilisant une clé symétrique :
 ```bash
