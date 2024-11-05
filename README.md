@@ -59,4 +59,8 @@ Un certificat SSL auto-signé permet d'établir une connexion sécurisée sans l
    openssl x509 -req -days 365 -in demande.csr -signkey cle_privee.pem -out certificat.crt
    ```
 
-Une fois généré, le fichier `certificat.crt` peut être utilisé pour configurer un serveur web, tel que Nginx ou Apache, avec SSL.
+Une fois généré, le fichier `certificat.crt` peut être utilisé pour configurer un serveur web, tel que Nginx ou Apache, avec SSL.  
+
+
+
+#### Voir la fonction de hashage  
